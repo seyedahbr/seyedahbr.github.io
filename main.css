@@ -1,0 +1,142 @@
+@import url('https://fonts.googleapis.com/css2?family=Georama:wght@600&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Ubuntu+Mono&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@100;300&display=swap');
+
+
+a {
+    text-decoration: none;
+    color: #007e54;
+}
+
+i {
+    padding-right: 5px;
+}
+
+a:hover {
+    opacity: 70%;
+}
+
+.content-900 {
+    max-width: 1000px;
+    margin: auto;
+}
+
+.title-font {
+    font-family: 'Georama', sans-serif;
+    color: dimgray;
+    text-align: left;
+}
+
+.update-font {
+    text-align: left;
+    font-size: small;
+    font-family: 'Roboto', sans-serif;
+    font-weight: bolder;
+}
+
+.pub-title-font {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-weight: bolder;
+    font-size: large;
+}
+
+.pub-authors-font {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: medium;
+}
+
+.pub-other-font {
+    font-family: 'Roboto', sans-serif;
+    text-align: left;
+    font-size: small;
+}
+
+.padding-left-20 {
+    padding-left: 20px;
+}
+
+.padding-right-20 {
+    padding-right: 20px;
+}
+.padding-bottom-10{
+    padding-bottom: 10px;
+}
+
+.margin-top-30 {
+    margin-top: 30px;
+}
+
+.margin-top-20 {
+    margin-top: 20px;
+}
+
+.margin-bottom-20 {
+    margin-bottom: 20px;
+}
+
+.email-font {
+    font-family: 'Ubuntu Mono', monospace;
+    color: gray;
+    text-align: left;
+    margin-top: 10px;
+}
+
+.fab,
+.fas {
+    font-size: x-large;
+    color: #007e54;
+}
+
+.fab:hover,
+.fas:hover {
+    opacity: 50%;
+}
+
+.avatar {
+    height: 100%;
+    max-width: 200px;
+    border-radius: 10px;
+    margin: auto;
+}
+
+.avatar-blog {
+    height: 100%;
+    max-width: 100px;
+    border-radius: 50%;
+    margin: auto;
+}
+
+.updates-box {
+    background-color: #f0fcf8;
+    border-radius: 5px;
+}
+
+.publish-box {
+    background-color: #fffff8;
+    border-radius: 5px;
+}
+
+.sec-title {
+    border-bottom: 4px solid #007e54;
+}
+
+.button{
+    border: none;
+    border-radius: 5px;
+    transition: 0.3s;
+}
+.button:hover{
+    opacity: 70%;
+}
+.more{
+    transition: 0.3s;
+}
+#more {display: none;}
+
+footer { background-color: #242424; color: #e2e2e2; flex-grow: 1; font-size: small;}
+
+footer a { color: #007e54; }
+
+footer a:hover { opacity: 70%; }
