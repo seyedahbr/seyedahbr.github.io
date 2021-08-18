@@ -102,6 +102,7 @@ a:hover {
 }
 
 .avatar-blog {
+    max-height: 142px;
     height: 100%;
     max-width: 100px;
     border-radius: 50%;
