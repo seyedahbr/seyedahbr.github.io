@@ -1,0 +1,146 @@
+<!DOCTYPE html>
+<html lang="en" prefix="schema: http://schema.org/ og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords"
+        content="seyed amir hosseini beghaeiraveri, seyed, personal webpage, blog, publication, research, semantic web, heriot-watt, macs, linked data, knowledge graph, wikidata">
+    <meta name="author" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="description" content="Wikidata Quality Days 2021">
+    <meta name="og:description" content="Wikidata Quality Days 2021">
+    <meta name="og:title" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="og:url" content="/">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="twitter:description" content="Wikidata Quality Days 2021">
+    <meta name="twitter:url" content="/">
+    <meta name="twitter:image" content="../seyed2.jpg">
+    <title>Seyed's Blog - ESWC 2021 Summary</title>
+    <link rel="shortcut icon" href="../seyed2.jpg">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+    <link rel="stylesheet" href="../main.css">
+    <script src="https://kit.fontawesome.com/8a677007ff.js" crossorigin="anonymous"></script>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1026.0" data-gr-ext-installed="">
+
+    <div class="content-900 w3-center">
+        <div class="w3-container">
+            <h1 class="title-font">Seyed's Blog</h1>
+            <div class="email-font">sh200 [at] hw.ac.uk</div>
+            <div class="email-font">
+                <a target="_blank" href="https://orcid.org/0000-0002-9123-5686"><i class="fab fa-orcid"></i></a>
+                <a target="_blank" href="https://scholar.google.com/citations?user=qRF0oHcAAAAJ&hl=en&oi=sra"><i
+                        style="padding-right:5px" class="fas fa-user-graduate"></i></a>
+                <a target="_blank" href="https://www.researchgate.net/profile/Seyed-Amir-Hosseini-Beghaeiraveri"><i
+                        class="fab fa-researchgate"></i></a>
+                <a target="_blank" href="https://github.com/seyedahbr"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="http://instagram.com/s_a_h_b_r"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://twitter.com/s_a_h_b_r"><i class="fab fa-twitter"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/s-a-h-b-r"><i class="fab fa-linkedin"></i></a>
+                <!-- <a target="_blank" href="Sina_CV.pdf"><i class="far fa-lg	 color-accent color-link-hover fa-file-alt">CV</i></a> -->
+                <a target="_blank" href="sahb_CV.pdf" class="pub-title-font"><b>CV</b></a>
+                <a href="./" class="pub-title-font"><b>Blog</b></a>
+            </div>
+        </div>
+    </div>
+    <div class="content-900 w3-container margin-top-30">
+        <h2>Wikidata Quality Days 2021</h2>
+        <p>From 8-15 September 2021, I participated in <a target="_blank"
+                href="https://m.wikidata.org/wiki/Wikidata:Events/Data_Quality_Days_2021">Wikidata Quality Days
+                2021</a>. The event included different editing
+            sessions for Wikidatians to populate any quality-related thing in Wikidata like properties, ranks, and
+            constraints. But I was in the presentation sessions only.</p>
+        <h3>Day 1</h3>
+        <p>The first day was n introduction about what is data quality, why it is important, why it is tricky, the
+            notion of subjective dimensions, and so on. Then there was a presentation about using scholarly articles
+            metadata to enrich Wikidata biomedical statements. In particular, a Wikidata bot called RefB.
+        </p>
+        <p>The internal operation of such bots is pretty simple: first, a query is performed for getting unreferenced
+            statements, then the bot searches third-party databases (like "PubMed Central" in this example) and adds the
+            returned IDs as provenance into Wikidata. But as always I would say, the quality of these references should
+            be assessed to conclude that such a bot increases the data quality of Wikidata or any knowledge graph.
+        </p>
+        <p>Anyway, the next presentation was Alessandro Piscopos's talk about the research he did during his Ph.D. on
+            the quality of Wikidata, especially on references and bot impacts. His works were my early motivation to
+            work on Wikdata reference quality.</p>
+
+        <h3>Day 2</h3>
+        <p>Started with a presentation about ORES, which is a machine learning approach to detect vandalism in Wikidata
+            by learning about old deleted statements and tags and labels that human users previously placed on incorrect
+            and deleted data.
+        </p>
+        <p>The next part was the ShEx community presentation about the entity schemas which had the most audiences.
+            About 26 people were there. There was a quick introduction by Andra about ShEx and its tools. Then Eric
+            presented good points about the benefits of using ShEx in visualizing schema structures and attracting
+            UML/XML people into ShEx schemas to expand the society. Then Andra came back and presented a live demo of
+            creating a sample Entity Schema.</p>
+        <p>I would say that it was the best and the most useful session of the week.
+        </p>
+        <h3>Day 3</h3>
+        <p>we had a presentation about Mismatch Finder which is a proposal to check for mismatches between Wikidata
+            statements and other trusted data sources like Authority Files in different big national libraries. Users
+            can report items they suspect to this system and the system will check and report the mismatches, not
+            immediately but after a period. I didn't find whether it is a heuristic system but they were talking about
+            using machine learning in it.
+        </p>
+        <p>there was also a presentation about linking Czech Republic libraries and Authority Files to Wikidata and
+            challenges and experiences.
+        </p>
+        <h3>Day 6</h3>
+
+        <p>At the morning, there was a presentation about periodic Wikidata editathons in Italian libraries and the
+            gains of these edit sessions in populating Wikidata. I the evening, there was a session talking about
+            ontology issues of Wikidata. Problems like having an upper ontology for Wikidata and the mess of Wikidata
+            ontology were discussed.
+        </p>
+
+        <p>At the next session which delve with working on Wikidata Fabricator most demanded tickets, I had the chance
+            to speak about my PhD plans on the quality of references and I got some guidance of tracing bot activities
+            and reference specific properties.
+        </p>
+
+
+        <h3>Summary</h3>
+
+        <p>The event was a good opportunity to see what are the concerns about Wikidata Quality. However, the most
+            shortcoming in my opinion is the lack of the critical look at the quality of Wikidata. I didn't feel a
+            critical discussion neither from chairs nor speakers and audiences. It was mostly demos and tools
+            representations and it was like everything is good, we have everything, just let's populate Wikidata. But
+            overall, it was good. Learning about tools is always good.
+
+        </p>
+        <hr />
+        <div class=""> Please share your comments with me via email (sh200
+            [at] hw.ac.uk) or <a target="_blank" href="https://twitter.com/s_a_h_b_r">Twitter</a>.</div>
+    </div>
+    <footer class="w3-cell-bottom w3-black margin-top-30">
+        <div class="content-900 padding-left-20 padding-right-20 margin-top-30">
+            <div class="w3-row">
+                <h2 class="title-font">Contacts</h2>
+                <div class="padding-bottom-10"> sh200 [at] hw.ac.uk</div>
+                <div> 1.54 Earl Mountbatten Building</div>
+                <div>School of Mathematical and Computer Sciences</div>
+                <div>Heriot-Watt University</div>
+                <div class="padding-bottom-10">Edinburgh, EH14 4AS, UK.</div>
+                <a target="_blank" href="https://github.com/seyedahbr"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="http://instagram.com/s_a_h_b_r"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://twitter.com/s_a_h_b_r"><i class="fab fa-twitter"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/s-a-h-b-r"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="w3-right-align">
+
+                <div>© All rights waived via <a target="_blank"
+                        href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+                    It's all yours!</div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>
