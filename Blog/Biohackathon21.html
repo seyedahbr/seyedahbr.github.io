@@ -1,0 +1,190 @@
+<!DOCTYPE html>
+<html lang="en" prefix="schema: http://schema.org/ og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords"
+        content="seyed amir hosseini beghaeiraveri, seyed, personal webpage, blog, publication, research, semantic web, heriot-watt, macs, linked data, knowledge graph, wikidata">
+    <meta name="author" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="description" content="Biohackathon Europe 21 Project 21 Report">
+    <meta name="og:description" content="Biohackathon Europe 21 Project 21 Report">
+    <meta name="og:title" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="og:url" content="/">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="twitter:description" content="Biohackathon Europe 21 Project 21 Report">
+    <meta name="twitter:url" content="/">
+    <meta name="twitter:image" content="../seyed2.jpg">
+    <title>Seyed's Blog - Biohackathon Europe 21 - Project 21 Report</title>
+    <link rel="shortcut icon" href="../seyed2.jpg">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+    <link rel="stylesheet" href="../main.css">
+    <script src="https://kit.fontawesome.com/8a677007ff.js" crossorigin="anonymous"></script>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1026.0" data-gr-ext-installed="">
+
+    <div class="content-900 w3-center">
+        <div class="w3-container">
+            <h1 class="title-font">Seyed's Blog</h1>
+            <div class="email-font">sh200 [at] hw.ac.uk</div>
+            <div class="email-font">
+                <a target="_blank" href="https://orcid.org/0000-0002-9123-5686"><i class="fab fa-orcid"></i></a>
+                <a target="_blank" href="https://scholar.google.com/citations?user=qRF0oHcAAAAJ&hl=en&oi=sra"><i
+                        style="padding-right:5px" class="fas fa-user-graduate"></i></a>
+                <a target="_blank" href="https://www.researchgate.net/profile/Seyed-Amir-Hosseini-Beghaeiraveri"><i
+                        class="fab fa-researchgate"></i></a>
+                <a target="_blank" href="https://github.com/seyedahbr"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="http://instagram.com/s_a_h_b_r"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://twitter.com/s_a_h_b_r"><i class="fab fa-twitter"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/s-a-h-b-r"><i class="fab fa-linkedin"></i></a>
+                <!-- <a target="_blank" href="Sina_CV.pdf"><i class="far fa-lg	 color-accent color-link-hover fa-file-alt">CV</i></a> -->
+                <a target="_blank" href="sahb_CV.pdf" class="pub-title-font"><b>CV</b></a>
+                <a href="./" class="pub-title-font"><b>Blog</b></a>
+            </div>
+        </div>
+    </div>
+    <div class="content-900 w3-container margin-top-30">
+        <p>19 Nov 2021</p>
+        <h2>Biohackathon Europe 21 - Project 21 Report</h2>
+        <p><a href="https://biohackathon-europe.org/" target="_blnk">BioHackathon Europe</a> is the annual gathering of
+            bioinformaticians from all around the world held by Elixir
+            since 2018. Each biohackathon consists of different projects with different focuses but all related to
+            bioinformatics. This year, the biohackathon was held in Barcelona and gathered together in-person and remote
+            participants in <a href="https://biohackathon-europe.org/projects.html" target="_blank">38 projects</a>. I
+            have been at
+            <a href="https://github.com/elixir-europe/bioHackathon-projects-2021/tree/master/projects/21"
+                target="_blank">project 21: Handling Knowledge Graphs Subsets</a>.
+        </p>
+        <h3>Project 21: Handling Knowledge Graphs Subsets</h3>
+        <p>As far as I know, the subsetting project was started from SWAT4LS hackathon 2019 by <a
+                href="https://scholar.google.com/citations?user=mb3JLM4AAAAJ&hl=en" target="_blank">Dan Brickley</a>.
+            The
+            project's goal initially was to have a very fast and effective tool that can extract a subset of Wikidata
+            just
+            with a few clicks. That goal very soon expand to cover all kinds of RDF KGs. The project was followed in the
+            Biohackathon 20 last year in which I was introduced to the group by my supervisor Dr. Gray (the project
+            could help me investigate Wikidata and scape from its huge size).
+        </p>
+        <p>The first SWAT4LS hackathon (2019) was more about defining the problem and identifying the pros and
+            applications of
+            subsetting. In Biohackathon 20 and its following SWAT4LS hackathon (2020), we were able to suggest several
+            pipelines of subsetting. The focus last year was more on the use of ShEx and ShEx validators. However, the
+            team became familiar with WDumper, and very soon we found that ShEx slurpers (Slurping is an ability of some
+            ShEx validators to return visited RDF triples during the validation) are not suitable for large-scale
+            subsetting.
+        </p>
+        <p>Last year we made a lot of progress on use cases too. The notion of topical subsets which I am using in my
+            current research actually comes out from last year's project. Last year we also have been able to extract
+            some initial subsets as well. We had a complete Docker image of the Wikidata Gene Wiki project combined with
+            information of other datasets by Dan Brickley.
+        </p>
+        <p>
+            Over the past year, the use of subsets has increased and more papers have been published about subsetting. I
+            am using subsets at the base of my recent paper and will use them in the RQSS. We also found a bunch of new
+            subsetting tools. We found KGTK, which is a work of the University of Southern California Information
+            Sciences Institute. Jose Labra has been working on 2 new tools. We have got good experiences using WDumper
+            through the past year. In short, subsetting has somehow found its place in the Linked Data research. So this
+            year's project was titled "Handling Knowledge Graphs Subsets". The aim was to achieve an integration of
+            different subsetting approaches as well as enrich the existed subsets and improve the existed tools as much
+            as possible.
+        </p>
+        <figure>
+            <img src="images/proj21.PNG" alt="Trulli" style="width:100%">
+            <figcaption>Project 21 outcomes, participants, and future work. Taken from Biohackathon 21 final report
+                slides.</figcaption>
+        </figure>
+        <h3>Hacking days</h3>
+        <p>On the first day, we talked about our achievements in the past year and the uses of subsets we have made. I
+            talked about my experiences with WDumper and how I used it in the last paper (Reference Statistics) to
+            create 6 subsets based on 6 WikiProjects. We discussed how we can keep the outputs (Zenodo, private servers,
+            creating HDT versions, etc.). We talked about creating a Wikibase from subsets from NTriple files directly,
+            mainly via Andrea's Wikidata Integrator tool.
+
+        </p>
+        <h3>Making most advantage of Dan Brickley's presence!</h3>
+        <p>In the only afternoon that we had DanBri in the group, we had a very long discussion about encoding problems
+            in Wikidata RDF dumps and WDumper outputs and ways to fix those problems. We believed problems are due to
+            the JSON conversion to RDF and the origin of errors is in the Wikidata ToolKit so one should fix the problem
+            from the root (to be done!). We also discussed the best triplestore for handling the subsets.
+
+        </p>
+        <h3>Do some programming</h3>
+        <p>In the first two days of improving methods and subsets, I wrote a script that adds labels and descriptions of
+            missing items to WDumper-based subsets. The original idea was from Dr. Gray when he used one of my subsets
+            for one of his courses last year. He realized this problem that there are lots of Q and P IDs in the second
+            level of subsets that don't have any other information in the subset. We thought it would be good to add at
+            least labels and descriptions of those Q/P IDs from Wikidata to the subset to increase readability. Ammar
+            obtained a subset of lipids extracted by PyShex slurping, which the group had not been able to do before.
+        </p>
+        <h3>Ontology and OWL Subsetting</h3>
+
+        <p>On the very first day, we had guests from Project 32: WikiProjects. They were looking to get a subset of
+            ontologies and as far as I know they were going to use SheX constraints instead of OWL to reduce the amount
+            of OWL checking in the first steps to narrow down the required computations and speed up reasoning over
+            ontologies. It was a new and very interesting use case. Eric from our group went deeply into the problem
+            with them.
+        </p>
+        <h3>KGTK is now our teammate!</h3>
+        <p>In the middle of the project, I managed to invite Filip, the head of the KGTK team, to the group. Sabah
+            joined our meetings too and after then, we had the most experienced people in each subsetting approach in
+            the discussions.
+        </p>
+        <h3>Outcomes and Future Work</h3>
+        <p>
+            The outcomes of the project this year if I want to mention one by one:<br>
+            1- Jose Labra's two Subsetting tools. Jose has been developing two subsetting tools (WDSub and SparkWDSub)
+            that use ShEx for filtering and Wikidata Java Toolkit to extract information directly from the Wikidata JSON
+            dumps. They do like ShEx filtering over the JSON dump which is the best option I believe. SparkWDSub is very
+            interesting, with a mathematical basement (Pregel Algorithm) and distributed computation!
+            <br>
+            2- The main achievement I believe is we aggregated the features and pros/cons of each tool in a detailed
+            table. That table will be completed
+            <br>
+            3- We also collected all available subsetting approaches and tools We defined a quite new use case of
+            subsetting which is ontology subsetting, and we had lots of discussions about improving the subsets and
+            errors.
+            <br>
+            We are going to submit a report preprint on BioHackrXiv very soon. Then we have plans to complete some
+            experiments on large-scale data with different tools and report all achievements in a journal paper,
+            probably in Nature’s scientific data journal. I have also the ambitious idea of making SparkWDSub the most
+            flexible, best performance, most accurate subsetting tool, which seemed cool to teammates, but surely needs
+            time!
+            <br>
+            At the end, I say Biohackathon 21 was a great pleasure. Hope to work with all my teammates soon.
+
+        </p>
+        <hr />
+        <div class=""> Please share your comments with me via email (sh200
+            [at] hw.ac.uk) or <a target="_blank" href="https://twitter.com/s_a_h_b_r">Twitter</a>.</div>
+    </div>
+    <footer class="w3-cell-bottom w3-black margin-top-30">
+        <div class="content-900 padding-left-20 padding-right-20 margin-top-30">
+            <div class="w3-row">
+                <h2 class="title-font">Contacts</h2>
+                <div class="padding-bottom-10"> sh200 [at] hw.ac.uk</div>
+                <div> 1.54 Earl Mountbatten Building</div>
+                <div>School of Mathematical and Computer Sciences</div>
+                <div>Heriot-Watt University</div>
+                <div class="padding-bottom-10">Edinburgh, EH14 4AS, UK.</div>
+                <a target="_blank" href="https://github.com/seyedahbr"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="http://instagram.com/s_a_h_b_r"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://twitter.com/s_a_h_b_r"><i class="fab fa-twitter"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/s-a-h-b-r"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="w3-right-align">
+
+                <div>© Seyed Amir Hosseini Beghaeiraveri<br>All rights waived via <a target="_blank" rel="license"
+                        href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+                    It's all yours!</div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>

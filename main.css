@@ -142,3 +142,17 @@ footer { background-color: #242424; color: #e2e2e2; flex-grow: 1; font-size: sma
 footer a { color: #007e54; }
 
 footer a:hover { opacity: 70%; }
+
+figure {
+    border: 1px #cccccc solid;
+    padding: 4px;
+    margin: auto;
+}
+  
+figcaption {
+    background-color: white;
+    color: grey;
+    font-style: italic;
+    padding: 2px;
+    text-align: center;
+}
