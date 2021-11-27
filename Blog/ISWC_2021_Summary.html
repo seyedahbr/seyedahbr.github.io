@@ -1,0 +1,236 @@
+<!DOCTYPE html>
+<html lang="en" prefix="schema: http://schema.org/ og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords"
+        content="seyed amir hosseini beghaeiraveri, seyed, personal webpage, blog, publication, research, semantic web, heriot-watt, macs, linked data, knowledge graph, wikidata">
+    <meta name="author" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="description" content="ISWC 2021 summary.">
+    <meta name="og:description" content="ISWC 2021 summary">
+    <meta name="og:title" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="og:url" content="/">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="twitter:description" content="ISWC 2021 summary">
+    <meta name="twitter:url" content="/">
+    <meta name="twitter:image" content="../seyed2.jpg">
+    <title>Seyed's Blog - ISWC 2021 Summary</title>
+    <link rel="shortcut icon" href="../seyed2.jpg">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+    <link rel="stylesheet" href="../main.css">
+    <script src="https://kit.fontawesome.com/8a677007ff.js" crossorigin="anonymous"></script>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1026.0" data-gr-ext-installed="">
+
+    <div class="content-900 w3-center">
+        <div class="w3-container">
+            <h1 class="title-font">Seyed's Blog</h1>
+            <div class="email-font">sh200 [at] hw.ac.uk</div>
+            <div class="email-font">
+                <a target="_blank" href="https://orcid.org/0000-0002-9123-5686"><i class="fab fa-orcid"></i></a>
+                <a target="_blank" href="https://scholar.google.com/citations?user=qRF0oHcAAAAJ&hl=en&oi=sra"><i
+                        style="padding-right:5px" class="fas fa-user-graduate"></i></a>
+                <a target="_blank" href="https://www.researchgate.net/profile/Seyed-Amir-Hosseini-Beghaeiraveri"><i
+                        class="fab fa-researchgate"></i></a>
+                <a target="_blank" href="https://github.com/seyedahbr"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="http://instagram.com/s_a_h_b_r"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://twitter.com/s_a_h_b_r"><i class="fab fa-twitter"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/s-a-h-b-r"><i class="fab fa-linkedin"></i></a>
+                <a target="_blank" href="sahb_CV.pdf" class="pub-title-font"><b>CV</b></a>
+                <a href="./" class="pub-title-font"><b>Blog</b></a>
+            </div>
+        </div>
+    </div>
+    <div class="content-900 w3-container margin-top-30">
+        <p>27 Nov 2021</p>
+        <h2>ISWC 2021 Summary</h2>
+        <p>ISWC 2021 took place from 24 to 28 October 2021. Here I am going to mention the main trends of the conference
+            and share experiences that I've had during the sessions that I've been on them.</p>
+
+        <h3>A bit about ISWC</h3>
+        <p>The International Semantic Web Conference (ISWC) is the leading Semantic Web Conference. The community is the
+            most advanced researchers in the world in the fields of the semantic web and linked data and knowledge
+            graphs. This year, the twentieth conference was held online (supposed to be in New York) for the second year
+            in a row. It was a very valuable experience for me to attend this event, especially because my paper had
+            been accepted in one of the most visited workshops of this event. And it was a great opportunity for me to
+            connect with this community.</p>
+        <p>This year's conference also consisted of many tracks like Research and industry tracks, workshops, tutorials,
+            posters, and demos, the doctoral consortium. In each track, there were multiple sessions with concert topics
+            like ontologies, Information Extraction, Question Answering, Logics and Reasoning and so on which we try to
+            skim some of them.</p>
+
+        <h3>Day 1, 2: Workshops and Tutorials</h3>
+        <h4>The 2nd Wikidata Workshop</h4>
+        <p>The first two days were for workshops and tutorials. On the first day, the Wikidata workshop was held. My
+            paper had been accepted in this workshop. In general, Wikidata is much related to my PhD research, and I
+            tried to be there wherever there was a trace of Wikidata, and the Wikidata workshop was one of the main
+            places. 13 of the 15 papers submitted to the workshop were accepted and they were presented in three
+            sessions. The presentation was five minutes of pre-recorded videos and ten minutes of Q&A in separate
+            break-out rooms. In total, we had between 50 and 60 audiences in the workshop, considering that it was
+            Sunday. The atmosphere of the workshop was very friendly. I remember from the first session, the Lukas
+            presentation about Wikidated 1.0, which was an RDF graph of Wikidata revisions, I mean the history of all
+            Wikidata edits, and such a dataset will be very useful, even necessary for investigating Wikidata quality,
+            which is the main part of my thesis.
+        </p>
+        <p>From the third session, the most interesting presentation in my opinion was Filip's presentation about KGTK,
+            which allows you to keep and query the entire Wikidata on your laptop. You know, Wikidata currently has more
+            than 100 GB compressed, and maintaining a personal copy of that in a traditional triplestore will need a
+            server-like requirement. KGTK is a very useful tool that uses several indexing steps and TSV files and a
+            specific query language named Kypher (very similar to cypher) and at the end, the tool create a portable
+            version of Wikidata that can be easily queried and used on laptops. (of course, powerful laptops!).
+        </p>
+
+        <h5>My presentation: Reference Statistics in Wikidata Topical Subsets </h5>
+        <p>My presentation was at the second session. The paper is a quite initial effort for investigating the quality
+            of Referencing in Wikidata. You might know that in Wikidata every single fact could have one or multiple
+            references. The quality of these references has been rarely studied so we tried to statistically compare
+            Wikidata references as a first step. We extracted 6 subsets from Wikidata based on 6 WikiProjects and we
+            then performed a bunch of queries to extract statistics like the ratio of referenced facts, usage frequency
+            of reference properties, and shared references. My presentation went very well and I received useful
+            feedback from audiences in my Q&A and I've been encouraged to continue the research in a wider framework.
+        </p>
+        <h4>KGTK Tutorial</h4>
+        <p>On the first day, a separate 6-hour tutorial on KGTK was held, which I've been in some parts of it. The KGTK
+            tool, as I said, is very effective for analytical research on big knowledge graphs as well as for generating
+            and populating custom knowledge graphs. I also heard a lot about this tool and its team at the recent ESWC
+            conference and I am in touch with their team leader, Filip. The KGTK team has presented and published
+            several useful researches using this tool so far, and it is a useful and evolving tool.
+        </p>
+        <h4>Day 2</h4>
+        <p>I started the second day with the Deep Learning for KGs workshop. In the sessions where I was in the
+            workshop, I found the following two presentations very interesting. One was to use deep learning to examine
+            the semantic validity of knowledge graphs. The authors examined the hierarchical structure of a knowledge
+            graph using KG-Bert and Word-embeddings. We know that different graphs use different vocabularies but
+            whatever vocabularies are, they all have a hierarchy of classes and properties. This study checks the degree
+            of adherence to this hierarchy in the knowledge graph using convolutional neural network.
+        </p>
+        <p>The second presentation was on the use of knowledge graphs as a training resource for neural networks and
+            object recognition, and especially style classification in digitized paintings.
+        </p>
+        <p>Overall, considerable part of the workshop was related to the application of deep learning in classification
+            of real world entities or class hierarchy of KG itself. There were other papers like Understanding Class
+            Representations, or another was Challenges of Applying Knowledge Graph and their Embeddings to a Real-world
+            Use-case, all related to classification problem.
+        </p>
+        <h4>Doctoral Consortium</h4>
+        <p>On the second day, I was also in the doctoral consortium. PhD symposiums have always been an interesting part
+            of conferences to me where it is a little further away from the formal atmosphere of the main conference.
+            The ISWC PhD Consortium was also very good. Vito Walter first talked about his experiences in his PhD.
+            Walter said his original paper was twice rejected by ISWC and in the third submission it was selected as the
+            best student paper. The following year, his thesis get the SWSA Dissertation award. Walter's story was a
+            wonderful paths from despair to victory. There were many good questions in the mentoring section. You can
+            see <a href="Quantity_or_Quality.html" target="_blank">this post</a> for example.
+        </p>
+
+        <h3>Day 3: Main Conference started!</h3>
+        <p>The main conference started on the third day. After welcoming and introducing, Yoelle was the first keynote
+            speaker from Amazon. She had a very interesting presentation on the challenges of humor detection in smart
+            tools like Alexa. Probably if you have seen Interstellar movie, in a scene, Coper adjusts the sense of humor
+            of TARS with one sentence! But In the real world, humor detection is not easy, and the device's reaction may
+            not be what the user expects. The problem is quite common in tools with human language interfaces. Anyway,
+            it was a good presentation about teaching the device using knowledge graphs. There were discussions about
+            using comedic texts or even stand-up comedy performances for training Alexa!
+        </p>
+        <p>After that, I joined the learning from Wikidata session. This session had two nominees for the best research
+            paper and best student paper, and in the end, the best research paper award went to one of the papers from
+            this session. I think out of ten or eleven candidates for the best article in different tracks, maybe 7 of
+            them were related to Wikidata in some way, either using as input dataset or doing an operation over
+            Wikidata. Anyway, this session was quite related to my thesis and I asked speakers several questions
+            especially about detecting human edits from bot edits in Wikidata.
+        </p>
+        <p>Another session I attended on the third day was data transformation. There was another candidate paper
+            related to Wikidata or in a better word related to Wikibase. Wikibase are a collection of software packages
+            including the Blazegraph Triple Store, a web-based user interface, a Java toolkit, and so on combined with a
+            dedicated RDF data model that powers Wikidata. This paper describes the experiences of using Wikibase for
+            importing some parts of the European Union knowledge graph with an emphasis on Wikibase specific data model
+            and references and qualifiers. This knowledge graph would be probably one of the use cases that I intend to
+            evaluate in the context of references!
+        </p>
+        <h3>Day 4</h3>
+        <p>The fourth day was a more social day In the conference. The keynote speaker first talked about what the
+            Semantic Web should look like in the future. On how this branch of science should evolve, should it remain
+            as a provider of other fields or should it become an independent branch science.
+        </p>
+        <p>The panel discussions continued in the same. Professor Berners-Lee, who is the inventor of the Web and the
+            Semantic Web, was on the panel. It was a very interesting discussion, especially his advice to younger
+            researchers to be curious and open new doors and increase communications to help Semantic web in its goals.
+            It was very motivating.
+        </p>
+        <p>I further went into the Data Analytics session, and there was an interesting tool introduced for big data
+            analysis using graph-based analyzer tools and uses the Apache Spark tool to distribute queries. It was an
+            interesting system, and more interestingly, we in the Subsetting project, are going to use Apache Spark in a
+            similar way for submitting Wikidata.
+        </p>
+        <h4>Poster and Demos</h4>
+        <p>I saw two very good demos in the poster and demo section. The first was the work of Aidan Hogan and his
+            student tries to create a graphical representation of the dispersion of authors in computer science fields,
+            combining Wikidata geographical information and author information in DBLP, which was interesting.
+        </p>
+        <p>another demo that won the best demo award was a FAIR checking system for assessing ontologies to be FAIR. It
+            is much faster than Mature FAIR checking and other FAIR evaluators.
+        </p>
+        <h4>Town Hall</h4>
+        <p>The fourth day of the town hall was also held. My opinion about ISWC (and to be honest, I did not dare to say
+            at the meeting for exactly the same reason that I am saying!) was that I thought the atmosphere of the
+            conference was too formal and the opportunity for communication for younger researchers was very less. much
+            Lesser than ESWC.
+        </p>
+        <h3>Day 5</h3>
+        <p>And we come to the fifth and final day of the conference where there was a lot of good discussion about the
+            Missions Track of the conference which was reproducibility. There were many discussions on What should be
+            the purpose of being reproducible? What helps it, for example, is sharing code necessary? Does anyone repeat
+            experiments at all!?
+        </p>
+        <p>I was also at the validation meeting on the last day, especially the winner of the best student research,
+            which was a study on the extent of using semantic markup in datasets that are published already. A problem
+            that I have also currently. For example, very few datasets have included license information in a
+            machine-readable form in their pages, and one needs to search the web pages for keywords to find the license
+            of the dataset. The third presentation was also interesting about developing a shape language for the
+            property graphs with functionality like ShEx in RDF.
+        </p>
+
+        <h3>Summary</h3>
+
+        <p>ISWC is really the game of the masters! It was a very interesting and valuable opportunity for me. From my
+            side, I can say I learned that Knowledge Graphs are being more and more important in the field of Semantic
+            Web and Linked Data. Wikidata is going to be the main Knowledge Graph for research and even industrial
+            purposes. Machine Learning and Deep Learning are getting a very important role in the Semantic Web and vice
+            versa. However, there are still lots of gaps and future work like the quality of data, evaluation methods,
+            reproducibility, applications, etc.
+        </p>
+        <hr />
+        <div class=""> Please share your comments with me via email (sh200
+            [at] hw.ac.uk) or <a target="_blank" href="https://twitter.com/s_a_h_b_r">Twitter</a>.</div>
+    </div>
+    <footer class="w3-cell-bottom w3-black margin-top-30">
+        <div class="content-900 padding-left-20 padding-right-20 margin-top-30">
+            <div class="w3-row">
+                <h2 class="title-font">Contacts</h2>
+                <div class="padding-bottom-10"> sh200 [at] hw.ac.uk</div>
+                <div> 1.54 Earl Mountbatten Building</div>
+                <div>School of Mathematical and Computer Sciences</div>
+                <div>Heriot-Watt University</div>
+                <div class="padding-bottom-10">Edinburgh, EH14 4AS, UK.</div>
+                <a target="_blank" href="https://github.com/seyedahbr"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="http://instagram.com/s_a_h_b_r"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://twitter.com/s_a_h_b_r"><i class="fab fa-twitter"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/s-a-h-b-r"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="w3-right-align">
+
+                <div>© Seyed Amir Hosseini Beghaeiraveri<br>All rights waived via <a target="_blank" rel="license"
+                        href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+                    It's all yours!</div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>
