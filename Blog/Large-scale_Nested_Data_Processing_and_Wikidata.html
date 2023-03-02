@@ -50,61 +50,61 @@
     <div class="content-900 w3-container margin-top-30">
         <p>2 Mar 2023</p>
         <h2>Large-scale Nested Data Processing and Wikidata</h2>
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">On the occasion of starting work in my new
+        <p><span>On the occasion of starting work in my new
                     position (distributed processing of nested data), I thought it worth writing a short post about the
                     challenges, my ideas regarding large-scale nested data processing, and Wikidata dump processing. We
                     also have a warm-up project using Spark!</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">Wikidata is a collaborative and open KG,
+        <p><span>Wikidata is a collaborative and open KG,
                     well-known for its massive size and complicated structure. It now (March 2023) has more than 102
                     million items and nearly 1.4 billion facts about those items and these numbers growing like every
                     minute. Wikidata is called a Knowledge Graph, but it is not stored in native graph DBMSes, its
                     backend is a MySQL database and its original dumps are in JSON, but as a Linked Open Data dataset,
                     the dumps are published in RDF format as well.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The Wikidata JSON dump, with nearly 105 GB
+        <p><span>The Wikidata JSON dump, with nearly 105 GB
                     of data (compressed), is the input of several tasks, including Subsetting. Almost all practical
                     subsetting tools (i.e., WDSub, WDumper, Wikibdase Dump Filter, and KGTK) get the JSON.gz dump. And
                     as a complex, unbalanced, and massive nested structure, the JSON dump is a tempting target for
                     large-scale nested data processing.</span></span></p>
 
-        <h2><span style="font-size:11.0pt"><span style="font-family:Calibri">&nbsp;</span></span><span
+        <h2><span>&nbsp;</span></span><span
                 style="font-size:14.0pt"><span style="font-family:Calibri">What is Large-Scale Nested Data
                     processing?</span></span></h2>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">Well, nested data are widely used nowadays.
+        <p><span>Well, nested data are widely used nowadays.
                     Data transfer in web applications and from the front end to the back end is almost entirely based on
                     JSON. No-SQL and hierarchical databases and DBMSes are on the other side. There is a high demand for
                     processing nested data</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">On the other hand, these data are massive.
+        <p><span>On the other hand, these data are massive.
                     So, one of the first approaches that come to mind in such a situation is to distribute the
                     processing using distributed platforms like Hadoop and Spark.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">But distributed processing on nested data on
+        <p><span>But distributed processing on nested data on
                     a large scale has challenges [1]:</span></span></p>
 
         <h3><span style="font-size:12.0pt"><span style="font-family:Calibri">Programming Mismatch</span></span></h3>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">It refers to the common problem of
+        <p><span>It refers to the common problem of
                     transferring centralized computations on distributed platforms. So the main problem in such cases is
                     that the distributed algorithm needs to access some parts of data that are not available at the
                     current working node.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The traditional solutions are repeating the
+        <p><span>The traditional solutions are repeating the
                     parts of data that are most likely to be needed in all worker nodes, but such an approach will
                     increase redundancy and needs more storage space, so it is costly.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">Another solution is to Flatten the nested
+        <p><span>Another solution is to Flatten the nested
                     data and to request to join the flattened data whenever it is not available. But flattening also
                     reduces the accuracy and it is possible some parts are missed in such joins requests, so there is a
                     chance of having errors.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">A more recent solution from [1] is a
+        <p><span>A more recent solution from [1] is a
                     compilation framework, very similar to a query optimization approach: doing joint requests as
                     top-level as possible!</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">In the Wikidata dump, and for querying the
+        <p><span>In the Wikidata dump, and for querying the
                     dump or subsetting the dump, it is quite possible that we face this challenge. The main reason is
                     the linked nature of the dump because top-level blobs (which are the items) are connected with
                     statements linked together, so it is quite possible that any query would need items that are not
@@ -113,69 +113,69 @@
         <h3><span style="font-size:12.0pt"><span style="font-family:Calibri">Top-level vs. Low-level
                     Tuples</span></span></h3>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">This challenge is when the number of
+        <p><span>This challenge is when the number of
                     top-level tuples is low but the number and the amount of data in their nested parts (low-level
                     tuples) are high. Because the distribution is based on top-level tuples, having a low number of them
                     will reduce the parallelization ratio, which reduces the efficiency.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The traditional solution for this problem is
+        <p><span>The traditional solution for this problem is
                     to flatten the nested data, but again we will have the possibility of errors and lots of redundancy.
                     Another limitation is that we will lose the nested structure for the intermediate queries when the
                     output of a query is the input of another query, and we would need this intermediate output to be
                     nested as well.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">Smith et al.&#39;s [1] solution for this
+        <p><span>Smith et al.&#39;s [1] solution for this
                     problem is called Shredding Framework, which is an optimized flattening algorithm that creates
                     concise outputs. This shredding should be applied to both data and the query, and it&#39;s based on
                     mapping the inner nested parts to labels and using pointers to these labels.</span></span></p>
 
         <h3><span style="font-size:12.0pt"><span style="font-family:Calibri">Skewed Data</span></span></h3>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">It refers to the imbalances in the amount of
+        <p><span>It refers to the imbalances in the amount of
                     data in the nested blobs which raises performance issues as some parts take longer processing time
                     than others.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">This is a real problem in the context of
+        <p><span>This is a real problem in the context of
                     Wikidata JSON dumps. For example, while some items have 10 statements, some others have more than
                     200 statements. In the second level, where some statements have one reference, some have more than
                     20 references or more.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The only way to deal with this problem in
+        <p><span>The only way to deal with this problem in
                     nested data is the Skew-resilient Processing framework [1], which has 3 steps:</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">1. Identify heavy nodes, i.e., finding those
+        <p><span>1. Identify heavy nodes, i.e., finding those
                     blobs with more data than a specific threshold</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">2. Create the Skew Triple, which is
+        <p><span>2. Create the Skew Triple, which is
                     separating the heavy and light blobs</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">3. Apply separate processing plans for the
+        <p><span>3. Apply separate processing plans for the
                     light and heavy blobs. For heavy blobs, there would be a second level of distribution.</span></span>
         </p>
 
         <h2><span style="font-size:14.0pt"><span style="font-family:Calibri">Nested-data and Wikidata</span></span></h2>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">I have two ideas:</span></span></p>
+        <p><span>I have two ideas:</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The first one is to study the Wikidata Dump
+        <p><span>The first one is to study the Wikidata Dump
                     as a use case using available heuristics. There are very joint features like Wikidata dumps that are
                     JSON based, which are quite Massive in size. Its Query time is very important and a challenge.
                     Subsetting is important and is a current problem and the fact that it is very skewed and also
                     interconnected.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">So in theory, I think the nested data
+        <p><span>So in theory, I think the nested data
                     algorithms and heuristics can be applied to Wikidata distribution processing, but we need also some
                     modifications. For example, we need to transform the algorithms in the context of graphs. Queries
                     should be in the form of SPARQL.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The second suggestion is vice versa: using
+        <p><span>The second suggestion is vice versa: using
                     graph representations for helping nested data processing, i.e., deploying graph triples to flatten
                     data. and subsequently, we need to create a mapping from initial queries to SPARQL. There are
                     several nested structures (like JSON) to RDF mapping approaches. In that case, we will have some
                     redundancy (maybe a lot), but we might get good performance because the RDF structure is very
                     simple.</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">One of the challenges in both directions is
+        <p><span>One of the challenges in both directions is
                     that the Spark GraphX platform is not well maintained as far as I know. So we might need to think of
                     a different distribution approach.</span></span></p>
 
@@ -254,7 +254,7 @@
         <p><span style="font-size:11.0pt"><span
                     style="font-family:Calibri">--------------------------------</span></span></p>
 
-        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">[1] Smith, J., Benedikt, M., Nikolic, M.,
+        <p><span>[1] Smith, J., Benedikt, M., Nikolic, M.,
                     &amp; Shaikhha, A. (2020). Scalable querying of nested data.&nbsp;</span></span><span
                 style="font-size:9.5pt"><span style="background-color:white"><em><span style="font-family:Arial"><span
                                 style="color:#222222">Proceedings of the VLDB
@@ -262,7 +262,7 @@
                     style="font-family:Calibri">,&nbsp;</span></span><span style="font-size:9.5pt"><span
                     style="background-color:white"><em><span style="font-family:Arial"><span
                                 style="color:#222222">14</span></span></em></span></span><span
-                style="font-size:11.0pt"><span style="font-family:Calibri">(3), 445-457.</span></span></p>
+               >(3), 445-457.</span></span></p>
 
     </div>
     <footer class="w3-cell-bottom w3-black margin-top-30">
