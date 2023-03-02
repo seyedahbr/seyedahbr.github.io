@@ -1,0 +1,293 @@
+<!DOCTYPE html>
+<html lang="en" prefix="schema: http://schema.org/ og: http://ogp.me/ns#">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <meta name="keywords"
+        content="seyed amir hosseini beghaeiraveri, seyed, personal webpage, blog, publication, research, semantic web, heriot-watt, macs, linked data, knowledge graph, wikidata">
+    <meta name="author" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="description" content="Large-scale Nested Data Processing and Wikidata">
+    <meta name="og:description" content="Large-scale Nested Data Processing and Wikidata">
+    <meta name="og:title" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="og:url" content="/">
+
+    <!-- Twitter -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="Seyed Amir Hosseini Beghaeiraveri">
+    <meta name="twitter:description" content="Large-scale Nested Data Processing and Wikidata">
+    <meta name="twitter:url" content="/">
+    <meta name="twitter:image" content="../seyed2.jpg">
+    <title>Seyed's Blog - Large-scale Nested Data Processing and Wikidata</title>
+    <link rel="shortcut icon" href="../seyed2.jpg">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+    <link rel="stylesheet" href="../main.css">
+    <script src="https://kit.fontawesome.com/8a677007ff.js" crossorigin="anonymous"></script>
+</head>
+
+<body data-new-gr-c-s-check-loaded="14.1026.0" data-gr-ext-installed="">
+
+    <div class="content-900 w3-center">
+        <div class="w3-container">
+            <h1 class="title-font">Seyed's Blog</h1>
+            <div class="email-font">sh200 [at] hw.ac.uk</div>
+            <div class="email-font">
+                <a target="_blank" href="https://orcid.org/0000-0002-9123-5686"><i class="fab fa-orcid"></i></a>
+                <a target="_blank" href="https://scholar.google.com/citations?user=qRF0oHcAAAAJ&hl=en&oi=sra"><i
+                        style="padding-right:5px" class="fas fa-user-graduate"></i></a>
+                <a target="_blank" href="https://www.researchgate.net/profile/Seyed-Amir-Hosseini-Beghaeiraveri"><i
+                        class="fab fa-researchgate"></i></a>
+                <a target="_blank" href="https://github.com/seyedahbr"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="http://instagram.com/s_a_h_b_r"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://twitter.com/s_a_h_b_r"><i class="fab fa-twitter"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/s-a-h-b-r"><i class="fab fa-linkedin"></i></a>
+                <a target="_blank" href="sahb_CV.pdf" class="pub-title-font"><b>CV</b></a>
+                <a href="./" class="pub-title-font"><b>Blog</b></a>
+            </div>
+        </div>
+    </div>
+    <div class="content-900 w3-container margin-top-30">
+        <p>2 Mar 2023</p>
+        <h2>Large-scale Nested Data Processing and Wikidata</h2>
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">On the occasion of starting work in my new
+                    position (distributed processing of nested data), I thought it worth writing a short post about the
+                    challenges, my ideas regarding large-scale nested data processing, and Wikidata dump processing. We
+                    also have a warm-up project using Spark!</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">Wikidata is a collaborative and open KG,
+                    well-known for its massive size and complicated structure. It now (March 2023) has more than 102
+                    million items and nearly 1.4 billion facts about those items and these numbers growing like every
+                    minute. Wikidata is called a Knowledge Graph, but it is not stored in native graph DBMSes, its
+                    backend is a MySQL database and its original dumps are in JSON, but as a Linked Open Data dataset,
+                    the dumps are published in RDF format as well.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The Wikidata JSON dump, with nearly 105 GB
+                    of data (compressed), is the input of several tasks, including Subsetting. Almost all practical
+                    subsetting tools (i.e., WDSub, WDumper, Wikibdase Dump Filter, and KGTK) get the JSON.gz dump. And
+                    as a complex, unbalanced, and massive nested structure, the JSON dump is a tempting target for
+                    large-scale nested data processing.</span></span></p>
+
+        <h2><span style="font-size:11.0pt"><span style="font-family:Calibri">&nbsp;</span></span><span
+                style="font-size:14.0pt"><span style="font-family:Calibri">What is Large-Scale Nested Data
+                    processing?</span></span></h2>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">Well, nested data are widely used nowadays.
+                    Data transfer in web applications and from the front end to the back end is almost entirely based on
+                    JSON. No-SQL and hierarchical databases and DBMSes are on the other side. There is a high demand for
+                    processing nested data</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">On the other hand, these data are massive.
+                    So, one of the first approaches that come to mind in such a situation is to distribute the
+                    processing using distributed platforms like Hadoop and Spark.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">But distributed processing on nested data on
+                    a large scale has challenges [1]:</span></span></p>
+
+        <h3><span style="font-size:12.0pt"><span style="font-family:Calibri">Programming Mismatch</span></span></h3>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">It refers to the common problem of
+                    transferring centralized computations on distributed platforms. So the main problem in such cases is
+                    that the distributed algorithm needs to access some parts of data that are not available at the
+                    current working node.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The traditional solutions are repeating the
+                    parts of data that are most likely to be needed in all worker nodes, but such an approach will
+                    increase redundancy and needs more storage space, so it is costly.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">Another solution is to Flatten the nested
+                    data and to request to join the flattened data whenever it is not available. But flattening also
+                    reduces the accuracy and it is possible some parts are missed in such joins requests, so there is a
+                    chance of having errors.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">A more recent solution from [1] is a
+                    compilation framework, very similar to a query optimization approach: doing joint requests as
+                    top-level as possible!</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">In the Wikidata dump, and for querying the
+                    dump or subsetting the dump, it is quite possible that we face this challenge. The main reason is
+                    the linked nature of the dump because top-level blobs (which are the items) are connected with
+                    statements linked together, so it is quite possible that any query would need items that are not
+                    available at the current worker node.</span></span></p>
+
+        <h3><span style="font-size:12.0pt"><span style="font-family:Calibri">Top-level vs. Low-level
+                    Tuples</span></span></h3>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">This challenge is when the number of
+                    top-level tuples is low but the number and the amount of data in their nested parts (low-level
+                    tuples) are high. Because the distribution is based on top-level tuples, having a low number of them
+                    will reduce the parallelization ratio, which reduces the efficiency.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The traditional solution for this problem is
+                    to flatten the nested data, but again we will have the possibility of errors and lots of redundancy.
+                    Another limitation is that we will lose the nested structure for the intermediate queries when the
+                    output of a query is the input of another query, and we would need this intermediate output to be
+                    nested as well.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">Smith et al.&#39;s [1] solution for this
+                    problem is called Shredding Framework, which is an optimized flattening algorithm that creates
+                    concise outputs. This shredding should be applied to both data and the query, and it&#39;s based on
+                    mapping the inner nested parts to labels and using pointers to these labels.</span></span></p>
+
+        <h3><span style="font-size:12.0pt"><span style="font-family:Calibri">Skewed Data</span></span></h3>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">It refers to the imbalances in the amount of
+                    data in the nested blobs which raises performance issues as some parts take longer processing time
+                    than others.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">This is a real problem in the context of
+                    Wikidata JSON dumps. For example, while some items have 10 statements, some others have more than
+                    200 statements. In the second level, where some statements have one reference, some have more than
+                    20 references or more.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The only way to deal with this problem in
+                    nested data is the Skew-resilient Processing framework [1], which has 3 steps:</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">1. Identify heavy nodes, i.e., finding those
+                    blobs with more data than a specific threshold</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">2. Create the Skew Triple, which is
+                    separating the heavy and light blobs</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">3. Apply separate processing plans for the
+                    light and heavy blobs. For heavy blobs, there would be a second level of distribution.</span></span>
+        </p>
+
+        <h2><span style="font-size:14.0pt"><span style="font-family:Calibri">Nested-data and Wikidata</span></span></h2>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">I have two ideas:</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The first one is to study the Wikidata Dump
+                    as a use case using available heuristics. There are very joint features like Wikidata dumps that are
+                    JSON based, which are quite Massive in size. Its Query time is very important and a challenge.
+                    Subsetting is important and is a current problem and the fact that it is very skewed and also
+                    interconnected.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">So in theory, I think the nested data
+                    algorithms and heuristics can be applied to Wikidata distribution processing, but we need also some
+                    modifications. For example, we need to transform the algorithms in the context of graphs. Queries
+                    should be in the form of SPARQL.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">The second suggestion is vice versa: using
+                    graph representations for helping nested data processing, i.e., deploying graph triples to flatten
+                    data. and subsequently, we need to create a mapping from initial queries to SPARQL. There are
+                    several nested structures (like JSON) to RDF mapping approaches. In that case, we will have some
+                    redundancy (maybe a lot), but we might get good performance because the RDF structure is very
+                    simple.</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">One of the challenges in both directions is
+                    that the Spark GraphX platform is not well maintained as far as I know. So we might need to think of
+                    a different distribution approach.</span></span></p>
+
+        <h2><span style="font-size:14.0pt"><span style="font-family:Calibri">A Warm-Up Spark Computation</span></span>
+        </h2>
+
+        <p>I tried to implement a very simple experiment: an average calculation distributed on three LAN machines using
+            Spark. To do this, I used one of the large RQSS_Extractor output files from the Gene Wiki subset, which can
+            be downloaded from <a href="https://zenodo.org/record/7336208">zenodo.org/record/7336208</a> (Download
+            GeneWiki_rqss_extractor_output.zip and use statement_node_ref_num.data)</p>
+
+        <p>This file is ~5 GB in size and contains 63521697 records. I added a record as the header (<span
+                style="font-family:Courier New,Courier,monospace">statementNode,score</span>) in the first line and
+            changed the file extension to <span style="font-family:Courier New,Courier,monospace">.csv</span>. The part
+            we are dealing with is the second column (<span
+                style="font-family:Courier New,Courier,monospace">score</span>). We want to get the average of this
+            column.</p>
+
+        <p>A simple non-distributed program to calculate the average like the below takes ~150 seconds on my machine:
+        </p>
+
+        <p><span style="font-family:Courier New,Courier,monospace">import pandas as pd<br />
+                from datetime import datetime<br />
+                start=datetime.now()<br />
+                data =
+                pd.read_csv(&quot;file:///scratch/spark-test/rqss_extractor_output/statement_node_ref_num.csv&quot;)<br />
+                print(&quot;The average score is {:5f}&quot;.format(data[&#39;score&#39;].mean()))<br />
+                end=datetime.now()<br />
+                print(&#39;time: &#39;,(end-start).total_seconds())</span></p>
+
+        <p>Then, I downloaded Spark standalone from this link:&nbsp;<a
+                href="https://www.apache.org/dyn/closer.lua/spark/spark-3.3.2/spark-3.3.2-bin-hadoop3.tgz">https://www.apache.org/dyn/closer.lua/spark/spark-3.3.2/spark-3.3.2-bin-hadoop3.tgz</a>
+        </p>
+
+        <p>I decompressed the binaries, putting the binaries on four Linux machines connected as a LAN, calling them
+            <strong>Linux01</strong>, <strong>Linux02</strong>, <strong>Linux03</strong>, and <strong>Linux04</strong>.
+        </p>
+
+        <p>Linux01 is the master, others will be the workers. So on Linux01, I ran the following command:</p>
+
+        <p><span style="font-family:Courier New,Courier,monospace">spark-3.3.2-bin-hadoop3/sbin/start-master.sh</span>
+        </p>
+
+        <p>and Linux01 will be my master node with URL:&nbsp;spark://linux01:7077. Then I ran the following on the other
+            machines:</p>
+
+        <p><span style="font-family:Courier New,Courier,monospace">spark-3.3.2-bin-hadoop3/sbin/start-worker.sh
+                spark://linux01:7077</span></p>
+
+        <p>I also installed PySpark on Linux01.</p>
+
+        <p>Now I wrote the following code using PySpark (thanks to the <a
+                href="https://www.projectpro.io/recipes/perform-descriptive-statistics-on-columns-of-dataframe-pyspark">https://www.projectpro.io/recipes/perform-descriptive-statistics-on-columns-of-dataframe-pyspark</a>):
+        </p>
+
+        <p><span style="font-family:Courier New,Courier,monospace">import pyspark<br />
+                from pyspark.sql import SparkSession<br />
+                import pyspark.sql.functions as f<br />
+                spark = SparkSession.builder.appName(&#39;score_average&#39;).getOrCreate()<br />
+                df =
+                spark.read.load(&quot;file:///scratch/spark-test/rqss_extractor_output/statement_node_ref_num.csv&quot;,
+                format=&quot;csv&quot;, sep=&quot;,&quot;, inferSchema=&quot;true&quot;, header=&quot;true&quot;)<br />
+                df.select(&quot;score&quot;).describe().show()</span><br />
+            &nbsp;</p>
+
+        <p>then used the following command to submit the program to my small Spark cluster:</p>
+
+        <p><span style="font-family:Courier New,Courier,monospace">./spark-3.3.2-bin-hadoop3/bin/spark-submit --master
+                spark://linux01:7077 --deploy-mode client score_average.py</span></p>
+
+        <p>and this time, I have the average, along with max, mean, count and standard deviation in less than 35
+            seconds!</p>
+
+        <p>&nbsp;</p>
+
+        <p><span style="font-size:11.0pt"><span
+                    style="font-family:Calibri">--------------------------------</span></span></p>
+
+        <p><span style="font-size:11.0pt"><span style="font-family:Calibri">[1] Smith, J., Benedikt, M., Nikolic, M.,
+                    &amp; Shaikhha, A. (2020). Scalable querying of nested data.&nbsp;</span></span><span
+                style="font-size:9.5pt"><span style="background-color:white"><em><span style="font-family:Arial"><span
+                                style="color:#222222">Proceedings of the VLDB
+                                Endowment</span></span></em></span></span><span style="font-size:11.0pt"><span
+                    style="font-family:Calibri">,&nbsp;</span></span><span style="font-size:9.5pt"><span
+                    style="background-color:white"><em><span style="font-family:Arial"><span
+                                style="color:#222222">14</span></span></em></span></span><span
+                style="font-size:11.0pt"><span style="font-family:Calibri">(3), 445-457.</span></span></p>
+
+    </div>
+    <footer class="w3-cell-bottom w3-black margin-top-30">
+        <div class="content-900 padding-left-20 padding-right-20 margin-top-30">
+            <div class="w3-row">
+                <h2 class="title-font">Contacts</h2>
+                <div class="padding-bottom-10"> sh200 [at] hw.ac.uk</div>
+                <div> 1.54 Earl Mountbatten Building</div>
+                <div>School of Mathematical and Computer Sciences</div>
+                <div>Heriot-Watt University</div>
+                <div class="padding-bottom-10">Edinburgh, EH14 4AS, UK.</div>
+                <a target="_blank" href="https://github.com/seyedahbr"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="http://instagram.com/s_a_h_b_r"><i class="fab fa-instagram"></i></a>
+                <a target="_blank" href="https://twitter.com/s_a_h_b_r"><i class="fab fa-twitter"></i></a>
+                <a target="_blank" href="https://www.linkedin.com/in/s-a-h-b-r"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="w3-right-align">
+
+                <div>© Seyed Amir Hosseini Beghaeiraveri<br>All rights waived via <a target="_blank" rel="license"
+                        href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>.
+                    It's all yours!</div>
+            </div>
+        </div>
+
+    </footer>
+</body>
+
+</html>
