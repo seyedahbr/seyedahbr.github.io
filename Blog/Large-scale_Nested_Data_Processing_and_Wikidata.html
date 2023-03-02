@@ -68,9 +68,8 @@
                     as a complex, unbalanced, and massive nested structure, the JSON dump is a tempting target for
                     large-scale nested data processing.</span></span></p>
 
-        <h2><span>&nbsp;</span></span><span
-                style="font-size:14.0pt"><span style="font-family:Calibri">What is Large-Scale Nested Data
-                    processing?</span></span></h2>
+        <h3>What is Large-Scale Nested Data
+                    processing?</h3>
 
         <p><span>Well, nested data are widely used nowadays.
                     Data transfer in web applications and from the front end to the back end is almost entirely based on
@@ -84,7 +83,7 @@
         <p><span>But distributed processing on nested data on
                     a large scale has challenges [1]:</span></span></p>
 
-        <h3><span style="font-size:12.0pt"><span style="font-family:Calibri">Programming Mismatch</span></span></h3>
+        <h4>Programming Mismatch</h4>
 
         <p><span>It refers to the common problem of
                     transferring centralized computations on distributed platforms. So the main problem in such cases is
@@ -110,8 +109,8 @@
                     statements linked together, so it is quite possible that any query would need items that are not
                     available at the current worker node.</span></span></p>
 
-        <h3><span style="font-size:12.0pt"><span style="font-family:Calibri">Top-level vs. Low-level
-                    Tuples</span></span></h3>
+        <h4>Top-level vs. Low-level
+                    Tuples</h4>
 
         <p><span>This challenge is when the number of
                     top-level tuples is low but the number and the amount of data in their nested parts (low-level
@@ -129,7 +128,7 @@
                     concise outputs. This shredding should be applied to both data and the query, and it&#39;s based on
                     mapping the inner nested parts to labels and using pointers to these labels.</span></span></p>
 
-        <h3><span style="font-size:12.0pt"><span style="font-family:Calibri">Skewed Data</span></span></h3>
+        <h4>Skewed Data</h4>
 
         <p><span>It refers to the imbalances in the amount of
                     data in the nested blobs which raises performance issues as some parts take longer processing time
@@ -153,7 +152,7 @@
                     light and heavy blobs. For heavy blobs, there would be a second level of distribution.</span></span>
         </p>
 
-        <h2><span style="font-size:14.0pt"><span style="font-family:Calibri">Nested-data and Wikidata</span></span></h2>
+        <h3>Nested-data and Wikidata</h3>
 
         <p><span>I have two ideas:</span></span></p>
 
@@ -179,8 +178,7 @@
                     that the Spark GraphX platform is not well maintained as far as I know. So we might need to think of
                     a different distribution approach.</span></span></p>
 
-        <h2><span style="font-size:14.0pt"><span style="font-family:Calibri">A Warm-Up Spark Computation</span></span>
-        </h2>
+        <h3>A Warm-Up Spark Computation</h3>
 
         <p>I tried to implement a very simple experiment: an average calculation distributed on three LAN machines using
             Spark. To do this, I used one of the large RQSS_Extractor output files from the Gene Wiki subset, which can
