@@ -1,0 +1,18 @@
+    <footer class="w3-cell-bottom w3-black margin-top-30">
+        <div class="content-900 padding-left-20 padding-right-20 margin-top-30">
+            <div class="w3-row">
+                <h2 class="title-font">Contacts</h2>
+                <div class="padding-bottom-10"> {{ site.author.email }}</div>
+                <div><a class="w3-text-light-grey" target="_blank" href="{{ site.author.org_url }}">{{ site.author.org }}</a></div>
+                <div class="padding-bottom-10">{{ site.author.location }}</div>
+                <a target="_blank" href="{{ site.social.github }}"><i class="fab fa-github"></i></a>
+                <a target="_blank" href="{{ site.social.instagram }}"><i class="fab fa-instagram"></i></a>
+                {% include icon-x.html %}
+                <a target="_blank" href="{{ site.social.linkedin }}"><i class="fab fa-linkedin"></i></a>
+            </div>
+            <div class="w3-right-align">
+                <div>{{ site.author.name }}<br>All content of my own waived via <a target="_blank" rel="license"
+                        href="https://creativecommons.org/publicdomain/zero/1.0/">CC0</a>, except my portrait photos.<br>Third-party figures and co-authored material remain with their owners.</div>
+            </div>
+        </div>
+    </footer>

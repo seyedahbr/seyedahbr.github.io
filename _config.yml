@@ -1,0 +1,27 @@
+# Site-wide settings. GitHub Pages builds this with Jekyll on every push.
+# The values below feed _includes/*.html, so a handle or address changes in one place.
+
+title: "Seyed Amir Hosseini Beghaeiraveri"
+url: "https://seyedahbr.github.io"
+description: "The personal webpage of Seyed Amir Hosseini Beghaeiraveri. The page contains biography, updates, blog posts, contact points, and publications of Seyed Amir Hosseini Beghaeiraveri."
+
+# Default <meta name="keywords">; a page can override it with its own `keywords:`.
+keywords: "seyed amir hosseini beghaeiraveri, seyed, amir hosseini, personal webpage, blog, publication, research, semantic web, gdotv, graph database, rdf, sparql, gremlin, heriot-watt, macs, linked data, knowledge graph, wikidata"
+
+author:
+  name: "Seyed Amir Hosseini Beghaeiraveri"
+  email: "amir [at] gdotv.com"
+  org: "gdotv Ltd"
+  org_url: "https://gdotv.com/"
+  location: "United Kingdom"
+
+social:
+  orcid: "https://orcid.org/0000-0002-9123-5686"
+  scholar: "https://scholar.google.com/citations?user=qRF0oHcAAAAJ&hl=en&oi=sra"
+  researchgate: "https://www.researchgate.net/profile/Seyed-Amir-Hosseini-Beghaeiraveri"
+  github: "https://github.com/seyedahbr"
+  instagram: "http://instagram.com/s_a_h_b_r"
+  x: "https://x.com/s_a_h_b_r"
+  linkedin: "https://www.linkedin.com/in/s-a-h-b-r"
+
+# Local preview:  bundle exec jekyll serve   ->  http://127.0.0.1:4000

@@ -1,0 +1,21 @@
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width,initial-scale=1">
+    <title>{% if page.heading %}Seyed's Blog - {{ page.heading }}{% else %}{{ page.title }}{% endif %}</title>
+    <meta name="keywords" content="{{ page.keywords | default: site.keywords }}{% if page.extra_keywords %}, {{ page.extra_keywords }}{% endif %}">
+    <meta name="author" content="{{ site.author.name }}">
+    <meta name="description" content="{{ page.description }}">
+    <meta name="og:description" content="{{ page.description }}">
+    <meta name="og:title" content="{{ site.author.name }}">
+    <meta name="og:url" content="{{ page.url | absolute_url }}">
+
+    <!-- X (formerly Twitter) card -->
+    <meta name="twitter:card" content="summary">
+    <meta name="twitter:title" content="{{ site.author.name }}">
+    <meta name="twitter:description" content="{{ page.description }}">
+    <meta name="twitter:url" content="{{ page.url | absolute_url }}">
+    <meta name="twitter:image" content="{{ '/seyed2.jpg' | absolute_url }}">
+    <link rel="shortcut icon" href="{{ '/seyed2.jpg' | relative_url }}">
+    <link rel="stylesheet" href="https://www.w3schools.com/w3css/4/w3.css">
+    <link rel="stylesheet" href="https://www.w3schools.com/lib/w3-theme-cyan.css">
+    <link rel="stylesheet" href="{{ '/main.css' | relative_url }}">
+    <script src="https://kit.fontawesome.com/8a677007ff.js" crossorigin="anonymous"></script>

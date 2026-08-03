@@ -1,0 +1,12 @@
+---
+layout: default
+---
+{% include blog-header.html nav_href="./" nav_label="Blog" %}
+    <div class="content-900 w3-container margin-top-30">
+        <p>{{ page.date_label }}</p>
+        <h2>{{ page.heading }}</h2>
+{{ content }}{% unless page.comments == false %}
+        <hr />
+        <div class=""> Please share your comments with me via email ({{ site.author.email }}) or <a target="_blank" href="{{ site.social.linkedin }}">LinkedIn</a>.</div>
+{%- endunless %}
+    </div>
