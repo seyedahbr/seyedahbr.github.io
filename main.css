@@ -120,6 +120,20 @@ a:hover {
     border-radius: 5px;
 }
 
+.role-box {
+    background-color: #f8f9fd;
+    border-radius: 5px;
+}
+
+.role-box ul {
+    margin-top: 5px;
+    padding-left: 25px;
+}
+
+.role-box li {
+    margin-bottom: 5px;
+}
+
 .sec-title {
     border-bottom: 4px solid #007e54;
 }
