@@ -94,6 +94,19 @@ a:hover {
     opacity: 50%;
 }
 
+/* X logo: the pinned Font Awesome 5 kit has no fa-x-twitter, so the mark is inline SVG */
+.icon-x {
+    font-size: x-large;
+    width: 1em;
+    height: 1em;
+    fill: #007e54;
+    vertical-align: -0.125em;
+}
+
+.icon-x:hover {
+    opacity: 50%;
+}
+
 .avatar {
     max-height: 282px;
     height: 100%;
